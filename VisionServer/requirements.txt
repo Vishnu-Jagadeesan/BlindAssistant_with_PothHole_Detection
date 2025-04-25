@@ -1,0 +1,14 @@
+# Web framework and CORS
+Flask>=2.0.0            # lightweight web server framework :contentReference[oaicite:0]{index=0}
+Flask-Cors>=3.0.10      # enable cross‑origin requests :contentReference[oaicite:1]{index=1}
+
+# Core computer vision and array handling
+opencv-python>=4.5.3.56 # OpenCV binaries for Python (cv2) :contentReference[oaicite:2]{index=2}
+numpy>=1.21.0           # fundamental package for numerical computing :contentReference[oaicite:3]{index=3}
+
+# Object detection and TTS
+ultralytics>=8.0.0      # YOLO detection models/inference :contentReference[oaicite:4]{index=4}
+pyttsx3>=2.98           # offline text‑to‑speech engine :contentReference[oaicite:5]{index=5}
+
+# TensorFlow (CPU‑only, includes TFLite support)
+tensorflow>=2.19.0      # high‑performance numeric library with lite interpreter :contentReference[oaicite:6]{index=6}
