@@ -69,8 +69,10 @@ export default function App() {
         <h1 className="assistant-text">Aid Assistant</h1>
       </div>
       <h2 className="subtitle">Awareness in Every Frame</h2>
-      <video ref={videoRef} autoPlay muted className="video-feed" />
-      <canvas ref={canvasRef} style={{ display: 'none' }} />
+      <div>
+        <video ref={videoRef} autoPlay muted className="video-feed" />
+        <canvas ref={canvasRef} style={{ display: 'none' }} />
+      </div>
       {alertMsg && <div className="alert">{alertMsg}</div>}
     </div>
   );
