@@ -40,7 +40,7 @@ export default function App() {
           const formData = new FormData();
           formData.append('frame', blob, 'frame.jpg');
           try {
-            const response = await fetch('http://localhost:5000/process_frame', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/process_frame`, {
               method: 'POST',
               body: formData,
             });
