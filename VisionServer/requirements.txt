@@ -11,7 +11,7 @@ ultralytics>=8.0.0      # YOLO detection models/inference :contentReference[oaic
 pyttsx3>=2.98           # offline text‑to‑speech engine :contentReference[oaicite:5]{index=5}
 
 # TensorFlow (CPU‑only, includes TFLite support)
-tensorflow>=2.19.0      # high‑performance numeric library with lite interpreter :contentReference[oaicite:6]{index=6}
+tensorflow-cpu>=2.19.0      # high‑performance numeric library with lite interpreter :contentReference[oaicite:6]{index=6}
 
 # WSGI server for production
 gunicorn>=20.1.0                  # Required to run app via "gunicorn app:app"
