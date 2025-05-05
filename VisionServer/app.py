@@ -189,7 +189,7 @@ def handle_frame():
         return jsonify({'alert': False, 'message': ''})
 
     except Exception as e:
-        logging.error(f"Processing failed: {str(e)}")
+        logging.error(f"Propythocessing failed: {str(e)}")
         return jsonify({'alert': False, 'message': ''})
 
 @app.route('/debug', methods=['POST'])
@@ -203,6 +203,11 @@ def debug_detections():
     
     cv2.imwrite('debug.jpg', frame)
     return send_file('debug.jpg', mimetype='image/jpeg')
+
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "ok"}), 200
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, threaded=True)
