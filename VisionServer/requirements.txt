@@ -1,17 +1,17 @@
-# Web framework and CORS
-Flask>=2.0.0            # lightweight web server framework :contentReference[oaicite:0]{index=0}
-Flask-Cors>=3.0.10      # enable cross‑origin requests :contentReference[oaicite:1]{index=1}
+Flask==3.1.0
+flask-cors==5.0.1
+gunicorn==20.1.0
 
-# Core computer vision and array handling
-opencv-python-headless>=4.5.3.56 # OpenCV binaries for Python (cv2) :contentReference[oaicite:2]{index=2}
-numpy>=1.21.0           # fundamental package for numerical computing :contentReference[oaicite:3]{index=3}
+numpy==2.1.1
+opencv-python-headless==4.11.0.86
+ultralytics==8.3.109
+pyttsx3==2.98
 
-# Object detection and TTS
-ultralytics>=8.0.0      # YOLO detection models/inference :contentReference[oaicite:4]{index=4}
-pyttsx3>=2.98           # offline text‑to‑speech engine :contentReference[oaicite:5]{index=5}
+tensorflow-cpu==2.19.0
+onnx==1.17.0
+onnxruntime==1.21.0
 
-# TensorFlow (CPU‑only, includes TFLite support)
-tensorflow-cpu>=2.19.0      # high‑performance numeric library with lite interpreter :contentReference[oaicite:6]{index=6}
-
-# WSGI server for production
-gunicorn>=20.1.0                  # Required to run app via "gunicorn app:app"
+absl-py==2.2.2
+click==8.1.8
+protobuf==5.29.4
+typing_extensions==4.13.2
