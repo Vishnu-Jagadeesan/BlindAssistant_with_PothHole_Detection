@@ -8,6 +8,7 @@ import warnings
 import logging
 import os
 
+os.makedirs('/tmp/ultralytics', exist_ok=True)
 os.environ['YOLO_CONFIG_DIR'] = '/tmp/ultralytics'
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
