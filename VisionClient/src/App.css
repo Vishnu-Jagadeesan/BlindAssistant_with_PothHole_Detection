@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background: url('./background.png') center no-repeat fixed;
+  background: url('/background.png') center no-repeat fixed;
   background-size: cover;
   min-height: 100vh;
   color: white;
@@ -10,7 +10,7 @@ body {
 .container {
   text-align: center;
   padding: 20px;
-  background: url('./background.png') center no-repeat fixed;
+  background: url('/background.png') center no-repeat fixed;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
