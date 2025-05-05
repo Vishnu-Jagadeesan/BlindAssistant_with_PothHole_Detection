@@ -20,3 +20,5 @@ dist/
 
 # Vite
 .vite/
+
+app1.py
