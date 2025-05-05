@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: vision-backend
+    runtime: python
+    rootDir: VisionServer
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
+    plan: free
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10
+
+  - type: web
+    name: vision-frontend
+    runtime: node
+    rootDir: VisionClient
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm start"
+    plan: free
+    envVars:
+      - key: VITE_API_URL
+        value: https://vision-backend.onrender.com

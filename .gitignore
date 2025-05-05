@@ -5,3 +5,18 @@ build/
 .DS_Store
 *.log
 vvnv
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Node
+node_modules/
+dist/
+.env
+.DS_Store
+
+# Vite
+.vite/

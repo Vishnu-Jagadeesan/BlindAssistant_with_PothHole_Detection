@@ -1,0 +1,28 @@
+# Ignore unnecessary files and folders for both backend and frontend
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Node modules and Vite dev cache
+node_modules/
+.vite/
+
+# Local environment variables
+.env
+
+# OS / Editor junk
+.DS_Store
+*.swp
+*.swo
+*.log
+
+# React build output (only needed in deploy container)
+VisionClient/dist/
+
+# Test images or local test assets
+VisionServer/test.py
+VisionServer/test_images/
+*.md
