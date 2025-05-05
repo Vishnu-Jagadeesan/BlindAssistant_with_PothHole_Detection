@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './app.css';
+import './App.css';
 
 export default function App() {
   const videoRef = useRef(null);
