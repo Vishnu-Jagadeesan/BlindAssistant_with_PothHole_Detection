@@ -167,6 +167,11 @@ def process_yolo_detections(frame):
 
     return alerts
 
+@app.route('/')
+def index():
+    return "Vision Backend is running", 200
+
+
 @app.route('/process_frame', methods=['POST'])
 def handle_frame():
     if 'frame' not in request.files:
