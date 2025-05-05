@@ -9,6 +9,7 @@ import logging
 import os
 
 os.environ['YOLO_CONFIG_DIR'] = '/tmp/ultralytics'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 # Configuration
 MODEL_PATHS = {
