@@ -3,7 +3,7 @@ Flask>=2.0.0            # lightweight web server framework :contentReference[oai
 Flask-Cors>=3.0.10      # enable cross‑origin requests :contentReference[oaicite:1]{index=1}
 
 # Core computer vision and array handling
-opencv-python>=4.5.3.56 # OpenCV binaries for Python (cv2) :contentReference[oaicite:2]{index=2}
+opencv-python-headless>=4.5.3.56 # OpenCV binaries for Python (cv2) :contentReference[oaicite:2]{index=2}
 numpy>=1.21.0           # fundamental package for numerical computing :contentReference[oaicite:3]{index=3}
 
 # Object detection and TTS
