@@ -26,3 +26,4 @@ VisionClient/dist/
 VisionServer/test.py
 VisionServer/test_images/
 *.md
+VisionServer/app.py
