@@ -141,18 +141,20 @@ def handle_frame():
         logging.error(f"Processing failed: {str(e)}")
         return jsonify({'alert': False, 'message': ''})
 
-@app.route('/debug', methods=['POST'])
-def debug_detections():
-    file = request.files['frame']
-    frame = cv2.imdecode(np.frombuffer(file.read(), np.uint8), cv2.IMREAD_COLOR)
-    _ = process_coco_detections(frame.copy())
-    _ = process_yolo_detections(frame.copy())
-    cv2.imwrite('debug.jpg', frame)
-    return send_file('debug.jpg', mimetype='image/jpeg')
+# @app.route('/debug', methods=['POST'])
+# def debug_detections():
+#     file = request.files['frame']
+#     frame = cv2.imdecode(np.frombuffer(file.read(), np.uint8), cv2.IMREAD_COLOR)
+#     _ = process_coco_detections(frame.copy())
+#     _ = process_yolo_detections(frame.copy())
+#     cv2.imwrite('debug.jpg', frame)
+#     return send_file('debug.jpg', mimetype='image/jpeg')
 
 @app.route('/health', methods=['GET'])
 def health_check():
     return jsonify({"status": "ok"}), 200
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, threaded=True)
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, threaded=True)

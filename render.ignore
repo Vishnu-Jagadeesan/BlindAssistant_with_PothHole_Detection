@@ -23,7 +23,7 @@ node_modules/
 VisionClient/dist/
 
 # Test images or local test assets
-VisionServer/test.py
+VisionServer/model_test.py
 VisionServer/test_images/
 *.md
 VisionServer/app.py
