@@ -11,6 +11,9 @@ import os
 # Runtime setup for Ultralytics
 os.makedirs('/tmp/ultralytics', exist_ok=True)
 os.environ['YOLO_CONFIG_DIR'] = '/tmp/ultralytics'
+
+os.makedirs('/tmp/matplotlib', exist_ok=True)
+os.environ['MPLCONFIGDIR'] = '/tmp/matplotlib'
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 # Configuration
