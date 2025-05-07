@@ -20,4 +20,4 @@ ultralytics==8.3.109
 # Logging utilities
 psutil==7.0.0
 
-matplotlib==0.0.0
+
