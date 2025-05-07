@@ -7,7 +7,7 @@ import warnings
 import logging
 import os
 
-# Runtime setup for Ultralytics
+# Runtime setup
 os.makedirs('/tmp/ultralytics', exist_ok=True)
 os.environ['YOLO_CONFIG_DIR'] = '/tmp/ultralytics'
 os.makedirs('/tmp/matplotlib', exist_ok=True)
@@ -39,31 +39,6 @@ logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
 CORS(app)
 
-# Lazy model loaders
-yolo_model = None
-interpreter = None
-labels = {}
-input_details = []
-output_details = []
-
-def load_yolo():
-    global yolo_model
-    if yolo_model is None:
-        from ultralytics import YOLO
-        yolo_model = YOLO(MODEL_PATHS['yolo'], task='detect')
-        logging.info("YOLO model loaded")
-
-def load_coco():
-    global interpreter, labels, input_details, output_details
-    if interpreter is None:
-        interpreter = Interpreter(MODEL_PATHS['coco'])
-        interpreter.allocate_tensors()
-        input_details = interpreter.get_input_details()
-        output_details = interpreter.get_output_details()
-        with open('models/coco_labels.txt', 'r') as f:
-            labels = {idx + 1: line.strip() for idx, line in enumerate(f) if line.strip()}
-        logging.info("COCO model loaded")
-
 def calculate_distance(pixel_width, obj_type):
     if pixel_width <= 0:
         return float('inf')
@@ -71,10 +46,18 @@ def calculate_distance(pixel_width, obj_type):
     return (known_width * DISTANCE_CONFIG['focal_length']) / (pixel_width * 100)
 
 def process_coco_detections(frame):
-    load_coco()
     alerts = []
     try:
         h, w = frame.shape[:2]
+
+        interpreter = Interpreter(MODEL_PATHS['coco'])
+        interpreter.allocate_tensors()
+        input_details = interpreter.get_input_details()
+        output_details = interpreter.get_output_details()
+
+        with open('models/coco_labels.txt', 'r') as f:
+            labels = {idx + 1: line.strip() for idx, line in enumerate(f) if line.strip()}
+
         rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         resized = cv2.resize(rgb, (300, 300))
         input_data = np.expand_dims(resized, 0).astype(np.uint8)
@@ -106,19 +89,25 @@ def process_coco_detections(frame):
             if distance < DISTANCE_CONFIG['thresholds'][label]:
                 alerts.append({'label': label, 'distance': distance, 'confidence': scores[i]})
                 logging.info(f"COCO: {label} ({distance:.1f}m, {scores[i]:.2f})")
+
+        del interpreter
+
     except Exception as e:
         logging.error(f"COCO error: {str(e)}")
     return alerts
 
 def process_yolo_detections(frame):
-    load_yolo()
     alerts = []
     try:
-        results = yolo_model(frame, conf=CONFIDENCE_THRESHOLDS['yolo'], iou=0.45)
+        from ultralytics import YOLO
+        model = YOLO(MODEL_PATHS['yolo'], task='detect')
+        logging.info("YOLO model loaded")
+
+        results = model(frame, conf=CONFIDENCE_THRESHOLDS['yolo'], iou=0.45)
         for res in results:
             for box in res.boxes:
                 cls_id = int(box.cls[0])
-                label = yolo_model.names[cls_id].lower().strip()
+                label = model.names[cls_id].lower().strip()
                 if label != 'pothole':
                     continue
                 x1, y1, x2, y2 = map(int, box.xyxy[0].tolist())
@@ -127,6 +116,9 @@ def process_yolo_detections(frame):
                 if dist < DISTANCE_CONFIG['thresholds'][label]:
                     alerts.append({'label': label, 'distance': dist, 'confidence': box.conf.item()})
                     logging.info(f"YOLO: {label} ({dist:.1f}m, {box.conf.item():.2f})")
+
+        del model
+
     except Exception as e:
         logging.error(f"YOLO error: {str(e)}")
     return alerts
