@@ -82,9 +82,9 @@ def process_coco_detections(frame):
         interpreter.set_tensor(input_details[0]['index'], input_data)
         interpreter.invoke()
 
-        boxes = interpreter.get_tensor(output_details[0]['index'])[0]
-        classes = interpreter.get_tensor(output_details[1]['index'])[0].astype(int)
-        scores = interpreter.get_tensor(output_details[2]['index'])[0]
+        boxes = interpreter.get_tensor(output_details[0]['index'])[0].copy()
+        classes = interpreter.get_tensor(output_details[1]['index'])[0].astype(int).copy()
+        scores = interpreter.get_tensor(output_details[2]['index'])[0].copy()
         num_det = int(interpreter.get_tensor(output_details[3]['index'])[0])
 
         for i in range(num_det):
