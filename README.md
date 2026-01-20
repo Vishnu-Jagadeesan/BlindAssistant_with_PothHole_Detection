@@ -81,8 +81,6 @@ These repositories are part of the full training and deployment pipeline.
 
 ## 📸 Demo Preview
 
-> _Add visuals here if available:_
-
 - Live camera view with bounding boxes
 - Real-time voice alerts: “Pothole detected!” or “Person within 5m”
 - Object detection text output in a dedicated panel
