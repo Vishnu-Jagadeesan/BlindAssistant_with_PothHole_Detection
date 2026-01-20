@@ -110,7 +110,9 @@ To gain access:
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [Vishnu Jagadeesan](LICENSE).
+📄 License: Vishnu Jagadeesan| 🔒 All rights reserved
+
 
 > © 2025 Vishnu Jagadeesan – For academic, research, and ethical use only.
 
