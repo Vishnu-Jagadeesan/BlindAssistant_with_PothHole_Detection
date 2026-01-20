@@ -6,7 +6,7 @@
 ![React](https://img.shields.io/badge/frontend-react-blue?logo=react)
 ![ONNX](https://img.shields.io/badge/model-YOLOv8%20(ONNX)-blueviolet)
 ![TensorFlow Lite](https://img.shields.io/badge/object%20detection-TFLite-orange?logo=tensorflow)
-![License](https://img.shields.io/badge/license-MIT-green)
+![License](https://img.shields.io/badge/license-Custom--VJ--Protected-red)
 ![Status](https://img.shields.io/badge/status-active-brightgreen)
 
 > A lightweight and smart vision system using ONNX + TFLite for browser-based pothole and object detection. Optimized for edge devices and accessibility.
